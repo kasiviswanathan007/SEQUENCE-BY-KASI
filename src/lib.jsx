@@ -13,7 +13,7 @@ export function useSmoothScroll(enabled) {
   useEffect(() => {
     if (!enabled) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true })
+    lenis = new Lenis({ duration: 0.75, lerp: 0.14, smoothWheel: true })
     lenis.on('scroll', ScrollTrigger.update)
     const tick = (t) => lenis.raf(t * 1000)
     gsap.ticker.add(tick)
@@ -25,7 +25,7 @@ export function scrollToId(id) {
   const el = document.getElementById(id)
   if (!el) return
   const offset = window.innerWidth <= 960 ? -60 : -72
-  if (lenis) lenis.scrollTo(el, { offset: id === 'home' ? 0 : offset, duration: 1.4 })
+  if (lenis) lenis.scrollTo(el, { offset: id === 'home' ? 0 : offset, duration: 0.8 })
   else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior: 'smooth' })
 }
 export function lockScroll(lock) {
@@ -77,17 +77,40 @@ export function useStagger(scope, selector, opts = {}) {
 }
 
 // ── image/video with styled placeholder fallback ──
-export function Media({ src, label, video = false, play = false }) {
+export function Media({ src, label, video = false, play = false, lazy = false }) {
   const [ok, setOk] = useState(Boolean(src))
+  const [show, setShow] = useState(!lazy)
+  const boxRef = useRef(null)
   const vref = useRef(null)
+  useEffect(() => {
+    if (!lazy || show) return
+    const el = boxRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => { if (entries[0]?.isIntersecting) { setShow(true); io.disconnect() } },
+      { rootMargin: '300px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [lazy, show])
   useEffect(() => {
     const v = vref.current
     if (!v) return
     play ? v.play().catch(() => {}) : (v.pause(), (v.currentTime = 0))
-  }, [play])
+  }, [play, show])
   if (!ok) return <div className="ph">{label}<Icon.Play className="ph-play" size={30} fill="#fff" /></div>
-  if (video) return <video ref={vref} src={src} muted loop playsInline preload="metadata" onError={() => setOk(false)} />
-  return <img src={src} alt={label || ''} loading="lazy" onError={() => setOk(false)} />
+  if (video) {
+    return (
+      <div ref={boxRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+        {show ? (
+          <video ref={vref} src={src} muted loop playsInline preload="metadata" onError={() => setOk(false)} />
+        ) : (
+          <div className="ph">{label}<Icon.Play className="ph-play" size={30} fill="#fff" /></div>
+        )}
+      </div>
+    )
+  }
+  return <img src={src} alt={label || ''} loading="lazy" decoding="async" onError={() => setOk(false)} />
 }
 
 // ── icons (inline stroke svg) ──

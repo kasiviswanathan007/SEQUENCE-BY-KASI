@@ -10,8 +10,8 @@ export function Work({ rows, onOpen }) {
   useGSAP(() => {
     ref.current.querySelectorAll('.row').forEach((row) => {
       gsap.from(row.querySelectorAll('.row-head, .card'), {
-        x: 80, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.05,
-        scrollTrigger: { trigger: row, start: 'top 88%' },
+        x: 40, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.03,
+        scrollTrigger: { trigger: row, start: 'top 92%' },
       })
     })
   }, { scope: ref, dependencies: [rows] })
@@ -47,10 +47,10 @@ function Card({ item, vertical, cat, onOpen }) {
   const [hover, setHover] = useState(false)
   const timer = useRef(null)
   const touch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
-  const enter = () => { if (touch) return; timer.current = setTimeout(() => setHover(true), 380) }
+  const enter = () => { if (touch) return; timer.current = setTimeout(() => setHover(true), 140) }
   const leave = () => { clearTimeout(timer.current); setHover(false) }
   const open = () => onOpen({ ...item, cat })
-  const cover = item.thumb ? <Media src={item.thumb} label={item.title} /> : (item.preview || item.video) ? <Media src={`${item.preview || item.video}#t=0.5`} video label={item.title} /> : <Media src="" label={item.title} />
+  const cover = item.thumb ? <Media src={item.thumb} label={item.title} /> : (item.preview || item.video) ? <Media src={`${item.preview || item.video}#t=0.5`} video lazy label={item.title} /> : <Media src="" label={item.title} />
   const hoverSrc = item.preview || item.video
   return (
     <div className={`card ${vertical ? 'v' : ''}`} style={{ zIndex: hover ? 30 : 1 }} onMouseEnter={enter} onMouseLeave={leave}>
@@ -59,9 +59,9 @@ function Card({ item, vertical, cat, onOpen }) {
       </button>
       <AnimatePresence>
         {hover && (
-          <motion.div className="card-pop" initial={{ opacity: 0, scale: 0.72, x: '-50%', y: '-50%' }}
-            animate={{ opacity: 1, scale: 1, x: '-50%', y: '-58%' }} exit={{ opacity: 0, scale: 0.8, x: '-50%', y: '-50%' }}
-            transition={{ duration: 0.35, ease }}>
+          <motion.div className="card-pop" initial={{ opacity: 0, scale: 0.85, x: '-50%', y: '-50%' }}
+            animate={{ opacity: 1, scale: 1, x: '-50%', y: '-58%' }} exit={{ opacity: 0, scale: 0.9, x: '-50%', y: '-50%' }}
+            transition={{ duration: 0.2, ease }}>
             <button className="card-pop-media" style={{ display: 'block', width: '100%' }} onClick={open} aria-label={`Open ${item.title}`}>
               {hoverSrc ? <Media src={hoverSrc} video play label={item.title} /> : <Media src={item.thumb} label={item.title} />}
               <span className="preview-tag">PREVIEW</span>
@@ -84,10 +84,10 @@ function Card({ item, vertical, cat, onOpen }) {
 const isEmbed = (u) => /youtube|youtu\.be|vimeo/.test(u || '')
 
 export function ProjectModal({ item, onClose }) {
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(true)
   useEffect(() => {
     if (!item) return
-    lockScroll(true); setPlaying(false)
+    lockScroll(true); setPlaying(Boolean(item.video))
     const k = (e) => e.key === 'Escape' && onClose()
     window.addEventListener('keydown', k)
     return () => { lockScroll(false); window.removeEventListener('keydown', k) }
@@ -95,10 +95,10 @@ export function ProjectModal({ item, onClose }) {
   return (
     <AnimatePresence>
       {item && (
-        <motion.div className="modal-wrap" data-lenis-prevent initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <motion.div className="modal-wrap" data-lenis-prevent initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} onClick={onClose}>
           <motion.div className="modal" role="dialog" aria-modal="true" aria-label={item.title} onClick={(e) => e.stopPropagation()}
-            initial={{ y: 80, scale: 0.94, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 60, scale: 0.96, opacity: 0 }}
-            transition={{ duration: 0.55, ease }}>
+            initial={{ y: 36, scale: 0.96, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 24, scale: 0.97, opacity: 0 }}
+            transition={{ duration: 0.26, ease }}>
             <div className="modal-media">
               {playing && item.video ? (
                 isEmbed(item.video)

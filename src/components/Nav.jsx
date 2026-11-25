@@ -71,10 +71,20 @@ export function Cursor() {
     const c = document.createElement('div')
     c.className = 'cursor'
     document.body.appendChild(c)
-    let x = 0, y = 0, cx = 0, cy = 0, raf
-    const move = (e) => { x = e.clientX; y = e.clientY; c.classList.toggle('big', !!e.target.closest('a, button, .card')) }
-    const loop = () => { cx += (x - cx) * 0.22; cy += (y - cy) * 0.22; c.style.transform = `translate(${cx}px, ${cy}px)`; raf = requestAnimationFrame(loop) }
-    window.addEventListener('mousemove', move); loop()
+    let x = 0, y = 0, cx = 0, cy = 0, raf = 0
+    const loop = () => {
+      cx += (x - cx) * 0.28
+      cy += (y - cy) * 0.28
+      c.style.transform = `translate3d(${cx}px, ${cy}px, 0)`
+      if (Math.abs(x - cx) > 0.1 || Math.abs(y - cy) > 0.1) raf = requestAnimationFrame(loop)
+      else raf = 0
+    }
+    const move = (e) => {
+      x = e.clientX; y = e.clientY
+      c.classList.toggle('big', !!e.target.closest('a, button, .card'))
+      if (!raf) raf = requestAnimationFrame(loop)
+    }
+    window.addEventListener('mousemove', move, { passive: true })
     return () => { window.removeEventListener('mousemove', move); cancelAnimationFrame(raf); c.remove() }
   }, [])
   return null
