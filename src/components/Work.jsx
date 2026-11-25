@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { gsap, useGSAP, Icon, Media, lockScroll, isMobile } from '../lib.jsx'
+import { gsap, useGSAP, Icon, Media, Reveal, lockScroll, isMobile } from '../lib.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -17,7 +17,11 @@ export function Work({ rows, onOpen }) {
     })
   }, { scope: ref, dependencies: [rows] })
   return (
-    <section className="work" id="work" data-nav="work" ref={ref}>
+    <section className="section work" id="work" data-nav="work" ref={ref}>
+      <div className="sec-head work-head">
+        <div><div className="kicker">Featured edits</div><Reveal className="h-display h-section">Works</Reveal></div>
+        <p className="lede">Commercials, brand films, reels and trailers cut for impact.</p>
+      </div>
       {rows.map((r) => <Row key={r.id} row={r} onOpen={onOpen} />)}
     </section>
   )

@@ -176,8 +176,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ── Work rows ── */
-.work { padding-top: 40px; }
+.work { padding: clamp(72px, 10vw, 128px) 0 clamp(36px, 5vw, 64px); }
+.work-head { padding: 0 var(--pad); }
 .row { position: relative; margin-bottom: clamp(36px, 4vw, 52px); }
+.row:last-child { margin-bottom: 0; }
 .row-head { display: flex; align-items: baseline; gap: 14px; padding: 0 var(--pad); margin-bottom: 14px; }
 .row-head h3 { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; }
 .row-head .count { color: var(--muted-2); font-size: 13px; }
