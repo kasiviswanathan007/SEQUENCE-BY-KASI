@@ -50,6 +50,36 @@ export function Services() {
   )
 }
 
+function CountUp({ to, suffix = '', duration = 900 }) {
+  const [val, setVal] = useState(0)
+  const elRef = useRef(null)
+  const started = useRef(false)
+  useEffect(() => {
+    const el = elRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVal(to)
+      return
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || started.current) return
+      started.current = true
+      io.disconnect()
+      const start = performance.now()
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1)
+        const eased = 1 - (1 - p) ** 3
+        setVal(Math.round(eased * to))
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }, { threshold: 0.3 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [to, duration])
+  return <b ref={elRef}>{val}{suffix}</b>
+}
+
 // Clients
 export function Clients() {
   const ref = useRef(null)
@@ -61,8 +91,8 @@ export function Clients() {
       <div className="sec-head">
         <div><div className="kicker">Starring brands</div><Reveal className="h-display h-section">Top Clients</Reveal></div>
         <div className="stats">
-          <div className="stat"><b>56+</b><small>CLIENTS</small></div>
-          <div className="stat"><b>16+</b><small>INDUSTRIES</small></div>
+          <div className="stat"><CountUp to={56} suffix="+" /><small>CLIENTS</small></div>
+          <div className="stat"><CountUp to={16} suffix="+" /><small>INDUSTRIES</small></div>
         </div>
       </div>
       <div className="clients-grid">
