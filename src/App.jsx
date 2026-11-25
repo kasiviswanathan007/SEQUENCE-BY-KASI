@@ -48,8 +48,8 @@ export default function App() {
           <Nav active={active} />
           <main>
             <Hero />
-            <Work rows={rows} onOpen={setProject} />
             <Clients />
+            <Work rows={rows} onOpen={setProject} />
             <Reviews />
             <Services />
             <Toolkit />

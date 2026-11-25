@@ -26,8 +26,8 @@ export const profile = {
 // Nav order (also the section order on the page)
 export const nav = [
   { id: 'home', label: 'Home' },
-  { id: 'work', label: 'Work' },
   { id: 'clients', label: 'Clients' },
+  { id: 'work', label: 'Work' },
   { id: 'reviews', label: 'Reviews' },
   { id: 'services', label: 'Services' },
   { id: 'softwares', label: 'Software & Tools' },
