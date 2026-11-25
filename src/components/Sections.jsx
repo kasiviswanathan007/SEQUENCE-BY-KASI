@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { gsap, useGSAP, Reveal, useStagger, Icon } from '../lib.jsx'
+import { gsap, useGSAP, Reveal, useStagger, Icon, isMobile } from '../lib.jsx'
 import { testimonials, services, clients, toolkit, profile, aboutMore } from '../data.js'
 
 // Reviews
@@ -82,7 +82,8 @@ export function Clients() {
 export function Toolkit() {
   const ref = useRef(null)
   useGSAP(() => {
-    gsap.from(ref.current.querySelector('.orbit-stage'), { scale: 0.9, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 80%' } })
+    if (isMobile()) return
+    gsap.from(ref.current.querySelector('.orbit-stage'), { scale: 0.9, opacity: 0, duration: 0.8, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 85%' } })
   }, { scope: ref })
   const count = toolkit.length
   return (
@@ -154,9 +155,10 @@ export function Toolkit() {
 export function About({ brands }) {
   const ref = useRef(null)
   useGSAP(() => {
-    gsap.from('.about-figure circle', { strokeDashoffset: 1000, duration: 2, ease: 'power2.inOut', scrollTrigger: { trigger: ref.current, start: 'top 70%' } })
-    gsap.from('.about-figure img', { clipPath: 'inset(100% 0 0 0)', duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 70%' } })
-    gsap.from(ref.current.querySelectorAll('.about-copy > *:not(.about-name)'), { y: 30, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: ref.current, start: 'top 65%' } })
+    if (isMobile()) return
+    gsap.from('.about-figure circle', { strokeDashoffset: 1000, duration: 1.4, ease: 'power2.inOut', scrollTrigger: { trigger: ref.current, start: 'top 75%' } })
+    gsap.from('.about-figure img', { clipPath: 'inset(100% 0 0 0)', duration: 1, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 75%' } })
+    gsap.from(ref.current.querySelectorAll('.about-copy > *:not(.about-name)'), { y: 24, opacity: 0, duration: 0.75, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: ref.current, start: 'top 70%' } })
   }, { scope: ref })
   return (
     <>
@@ -202,9 +204,10 @@ export function Contact() {
   const emailAddr = profile.email.replace(/^mailto:/, '')
   useEffect(() => { const t = setInterval(() => setN((v) => (v <= 1 ? 5 : v - 1)), 1000); return () => clearInterval(t) }, [])
   useGSAP(() => {
-    const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 60%' } })
-    tl.from('.tbc .ch', { yPercent: 120, opacity: 0, rotate: 8, duration: 1, ease: 'expo.out', stagger: 0.035 })
-      .from('.contact-copy > *:not(.tbc)', { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.08 }, '-=0.6')
+    if (isMobile()) return
+    const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top 70%' } })
+    tl.from('.tbc .ch', { yPercent: 120, opacity: 0, rotate: 8, duration: 0.75, ease: 'expo.out', stagger: 0.025 })
+      .from('.contact-copy > *:not(.tbc)', { y: 20, opacity: 0, duration: 0.65, ease: 'expo.out', stagger: 0.06 }, '-=0.45')
   }, { scope: ref })
   const word = (w) => [...w].map((c, i) => <span className="ch" key={i}>{c === ' ' ? '\u00A0' : c}</span>)
   return (

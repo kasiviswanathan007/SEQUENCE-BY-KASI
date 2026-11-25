@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react'
-import { gsap, useGSAP, Icon, scrollToId } from '../lib.jsx'
+import { gsap, useGSAP, Icon, scrollToId, isMobile } from '../lib.jsx'
 import { profile } from '../data.js'
 
 // 03 · Home — showreel behind, portrait in lime ring, title rise, parallax on scroll
 export function Hero() {
   const ref = useRef(null)
-  const [reelOk, setReelOk] = useState(true)
+  const [reelOk, setReelOk] = useState(Boolean(profile.showreel))
   useGSAP(() => {
+    if (isMobile()) return
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
     tl.from('.hero-bg', { scale: 1.15, opacity: 0, duration: 1.8 })
       .from('.hero-ring circle', { strokeDashoffset: 1000, duration: 1.8, ease: 'power2.inOut' }, 0.2)

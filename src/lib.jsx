@@ -7,11 +7,14 @@ import Lenis from 'lenis'
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 export { gsap, ScrollTrigger, useGSAP }
 
+export const isMobile = () =>
+  typeof window !== 'undefined' && (window.innerWidth <= 960 || window.matchMedia('(pointer: coarse)').matches)
+
 // ── smooth scroll (Lenis) wired into GSAP's ticker ──
 let lenis = null
 export function useSmoothScroll(enabled) {
   useEffect(() => {
-    if (!enabled) return
+    if (!enabled || isMobile()) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     lenis = new Lenis({ duration: 0.75, lerp: 0.14, smoothWheel: true })
     lenis.on('scroll', ScrollTrigger.update)
@@ -51,9 +54,10 @@ export function useActiveSection(ids, ready = true) {
 export function Reveal({ as: Tag = 'h2', className = '', children, delay = 0 }) {
   const ref = useRef(null)
   useGSAP(() => {
+    if (isMobile()) return
     gsap.from(ref.current.querySelectorAll('.split-line > span'), {
-      yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.08, delay,
-      scrollTrigger: { trigger: ref.current, start: 'top 85%' },
+      yPercent: 110, duration: 0.9, ease: 'expo.out', stagger: 0.08, delay,
+      scrollTrigger: { trigger: ref.current, start: 'top 88%' },
     })
   }, { scope: ref })
   const lines = Array.isArray(children) ? children : [children]
@@ -67,11 +71,12 @@ export function Reveal({ as: Tag = 'h2', className = '', children, delay = 0 }) 
 // ── fade/rise a group of children on scroll ──
 export function useStagger(scope, selector, opts = {}) {
   useGSAP(() => {
+    if (isMobile()) return
     const els = scope.current?.querySelectorAll(selector)
     if (!els?.length) return
     gsap.from(els, {
-      y: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08,
-      scrollTrigger: { trigger: scope.current, start: 'top 80%' }, ...opts,
+      y: 40, opacity: 0, duration: 0.75, ease: 'expo.out', stagger: 0.05,
+      scrollTrigger: { trigger: scope.current, start: 'top 86%' }, ...opts,
     })
   }, { scope })
 }
@@ -88,7 +93,7 @@ export function Media({ src, label, video = false, play = false, lazy = false })
     if (!el) return
     const io = new IntersectionObserver(
       (entries) => { if (entries[0]?.isIntersecting) { setShow(true); io.disconnect() } },
-      { rootMargin: '300px' },
+      { rootMargin: isMobile() ? '120px' : '300px' },
     )
     io.observe(el)
     return () => io.disconnect()

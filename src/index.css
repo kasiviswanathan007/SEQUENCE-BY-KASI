@@ -31,6 +31,7 @@ body {
 }
 body.locked { overflow: hidden; }
 img, video { display: block; max-width: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 ::selection { background: var(--lime); color: #000; }
@@ -146,16 +147,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-scroll::after { content: ''; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--lime); animation: scrolldot 1.8s var(--ease) infinite; }
 @keyframes scrolldot { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(12px);opacity:0} 100%{opacity:0} }
 @media (max-width: 960px) {
-  .hero { height: auto; min-height: 0; padding-bottom: 40px; }
+  .grain { display: none; }
+  .btn-glass { backdrop-filter: none; background: rgba(110,110,118,.5); }
+  .hero { height: auto; min-height: 0; padding-bottom: 84px; }
   .hero-fade-l { display: none; }
-  .hero-figure { position: relative; right: auto; margin: 70px auto 0; height: auto; width: min(78vw, 420px); }
-  .hero-copy { position: relative; left: auto; bottom: auto; margin: -90px auto 0; padding: 0 16px; text-align: center; align-items: center; width: 100%; }
+  .hero-figure { position: relative; right: auto; margin: 68px auto 0; height: auto; width: min(68vw, 320px); }
+  .hero-copy { position: relative; left: auto; bottom: auto; margin: -56px auto 0; padding: 0 16px; text-align: center; align-items: center; width: 100%; }
   .hero-tag::before { display: none; }
   .hero-meta { justify-content: center; }
   .hero-btns { width: 100%; }
   .hero-btns .btn { flex: 1; }
   .hero-scroll { display: none; }
-  .hero-fade-b { height: 45%; bottom: auto; top: calc(70px + min(78vw, 420px) * 1.462 - 45%); }
+  .hero-fade-b { height: 45%; bottom: auto; top: calc(68px + min(68vw, 320px) * 1.462 - 45%); }
+  .row-track { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .timeline-svg { filter: none; }
 }
 
 /* ── Work rows ── */

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { gsap, useGSAP, Icon } from '../lib.jsx'
+import { gsap, useGSAP, Icon, isMobile } from '../lib.jsx'
 import { profiles, profile } from '../data.js'
 
 // 01 · Intro sting — logo reveal, lime wipe, name tag, then hands off
@@ -8,6 +8,13 @@ export function Intro({ onDone }) {
   const ref = useRef(null)
   const tl = useRef(null)
   useGSAP(() => {
+    if (isMobile()) {
+      tl.current = gsap.timeline({ onComplete: onDone })
+        .from(ref.current, { opacity: 0, duration: 0.35 })
+        .to({}, { duration: 0.65 })
+        .to(ref.current, { opacity: 0, duration: 0.3, ease: 'power2.in' })
+      return
+    }
     tl.current = gsap.timeline({ onComplete: onDone })
       .from('.intro-logo', { scale: 1.25, opacity: 0, filter: 'blur(18px)', duration: 1.2, ease: 'expo.out' })
       .from('.intro-line', { scaleX: 0, duration: 0.7, ease: 'expo.inOut' }, '-=0.6')

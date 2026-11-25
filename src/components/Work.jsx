@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { gsap, useGSAP, Icon, Media, lockScroll } from '../lib.jsx'
+import { gsap, useGSAP, Icon, Media, lockScroll, isMobile } from '../lib.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -8,6 +8,7 @@ const ease = [0.22, 1, 0.36, 1]
 export function Work({ rows, onOpen }) {
   const ref = useRef(null)
   useGSAP(() => {
+    if (isMobile()) return
     ref.current.querySelectorAll('.row').forEach((row) => {
       gsap.from(row.querySelectorAll('.row-head, .card'), {
         x: 40, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.03,
