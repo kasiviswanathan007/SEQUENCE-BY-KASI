@@ -55,6 +55,7 @@ export function Clients() {
   const ref = useRef(null)
   useStagger(ref, '.client', { y: 30, stagger: 0.04 })
   const names = clients.map((c) => c.name)
+  const marqueeNames = isMobile() ? names : [...names, ...names]
   return (
     <section className="section" id="clients" data-nav="clients" ref={ref}>
       <div className="sec-head">
@@ -67,12 +68,12 @@ export function Clients() {
       <div className="clients-grid">
         {clients.map((c, i) => (
           <div className="client" key={i}>
-            {c.logo ? <img src={c.logo} alt={c.name} /> : <span>{c.name}</span>}
+            {c.logo ? <img src={c.logo} alt={c.name} loading="lazy" decoding="async" /> : <span>{c.name}</span>}
           </div>
         ))}
       </div>
       <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">{[...names, ...names].map((n, i) => <span key={i}>{n}</span>)}</div>
+        <div className="marquee-track">{marqueeNames.map((n, i) => <span key={i}>{n}</span>)}</div>
       </div>
     </section>
   )
@@ -81,6 +82,7 @@ export function Clients() {
 // Software & Tools
 export function Toolkit() {
   const ref = useRef(null)
+  const [activeTool, setActiveTool] = useState(null)
   useGSAP(() => {
     if (isMobile()) return
     gsap.from(ref.current.querySelector('.orbit-stage'), { scale: 0.9, opacity: 0, duration: 0.8, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 85%' } })
@@ -140,13 +142,20 @@ export function Toolkit() {
         <div className="orbit-track">
           {toolkit.map((t, i) => (
             <div className="orbit-slot" key={t.name} style={{ '--angle': `${(360 / count) * i}deg` }}>
-              <div className="orbit-node" title={t.name}>
-                <img src={t.logo} alt={t.name} />
-              </div>
+              <button
+                type="button"
+                className={`orbit-node${activeTool === t.name ? ' active' : ''}`}
+                title={t.name}
+                aria-label={t.name}
+                onClick={() => setActiveTool((cur) => (cur === t.name ? null : t.name))}
+              >
+                <img src={t.logo} alt={t.name} loading="lazy" decoding="async" />
+              </button>
             </div>
           ))}
         </div>
       </div>
+      {activeTool && <div className="orbit-active-label">{activeTool}</div>}
     </section>
   )
 }

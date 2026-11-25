@@ -161,6 +161,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hero-fade-b { height: 45%; bottom: auto; top: calc(68px + min(68vw, 320px) * 1.462 - 45%); }
   .row-track { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .timeline-svg { filter: none; }
+  .timeline-playhead { animation: none; }
+  .orbit-track, .orbit-node { animation: none; }
+  .orbit-node { box-shadow: none; }
+  .orbit-ring-inner { background: rgba(13,13,15,.92); }
+  .client::before { display: none; }
+  .client:hover { color: inherit; }
+  .client:hover img { filter: none; }
+  .client:active { border-color: var(--lime); transform: scale(0.98); }
+  .marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .marquee::-webkit-scrollbar { display: none; }
+  .marquee-track { animation: none; gap: 28px; padding: 0 var(--pad); }
+  .marquee-track span { font-size: 24px; gap: 28px; }
 }
 
 /* ── Work rows ── */
@@ -305,9 +317,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .orbit-stage:hover .orbit-track { animation-play-state: paused; }
 .orbit-stage:hover .orbit-node { animation-play-state: paused; }
 .orbit-slot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: rotate(var(--angle)) translateY(calc(min(560px, 84vw) / -2)) rotate(calc(var(--angle) * -1)); }
-.orbit-node { width: 82px; height: 82px; margin: -41px 0 0 -41px; border-radius: 50%; background: var(--s2); border: 1.5px solid #2e2e36; box-shadow: 0 12px 30px rgba(0,0,0,.75); display: flex; align-items: center; justify-content: center; overflow: hidden; animation: orbitCounter 44s linear infinite; transition: border-color .3s, box-shadow .3s; }
-.orbit-node:hover { border-color: var(--lime); box-shadow: 0 0 24px rgba(205,247,4,.35); }
+.orbit-node { width: 82px; height: 82px; margin: -41px 0 0 -41px; border-radius: 50%; background: var(--s2); border: 1.5px solid #2e2e36; box-shadow: 0 12px 30px rgba(0,0,0,.75); display: flex; align-items: center; justify-content: center; overflow: hidden; animation: orbitCounter 44s linear infinite; transition: border-color .3s, box-shadow .3s; padding: 0; }
+.orbit-node:hover, .orbit-node.active { border-color: var(--lime); box-shadow: 0 0 24px rgba(205,247,4,.35); }
 .orbit-node img { width: 100%; height: 100%; object-fit: contain; transform: scale(2.15); }
+.orbit-active-label { text-align: center; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--lime); font-weight: 600; margin-top: 8px; }
 @keyframes orbitSpin { to { transform: rotate(360deg); } }
 @keyframes orbitCounter { to { transform: rotate(-360deg); } }
 @media (max-width: 640px) {
