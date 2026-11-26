@@ -192,7 +192,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (hover: none) { .row-arrow { display: none; } }
 .card { position: relative; flex-shrink: 0; width: clamp(220px, 19vw, 300px); aspect-ratio: 16/9; scroll-snap-align: start; z-index: 1; }
 .card.v { width: clamp(130px, 11vw, 176px); aspect-ratio: 9/16; }
-.card-inner { position: absolute; inset: 0; border-radius: 4px; overflow: hidden; background: var(--s3); transform-origin: center; }
+.card-inner { position: absolute; inset: 0; border-radius: 6px; overflow: hidden; background: var(--s3); border: 1.5px solid rgba(205, 247, 4, .55); transform-origin: center; transition: border-color .25s; }
+.card:hover .card-inner, .card-inner:focus-visible { border-color: var(--lime); }
 .card-media { position: absolute; inset: 0; }
 .card-media img, .card-media video { width: 100%; height: 100%; object-fit: cover; }
 .card-pop { position: absolute; left: 50%; top: 50%; width: 140%; z-index: 20; border-radius: 6px; overflow: hidden; background: var(--s3); box-shadow: 0 24px 60px rgba(0,0,0,.85); outline: 2px solid var(--lime); }
