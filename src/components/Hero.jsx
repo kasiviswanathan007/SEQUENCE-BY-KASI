@@ -10,7 +10,6 @@ export function Hero() {
     if (isMobile()) return
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
     tl.from('.hero-bg', { opacity: 0, duration: 1.0 })
-      .from('.hero-ring circle', { strokeDashoffset: 1000, duration: 1.4, ease: 'power2.inOut' }, 0.15)
       .from('.hero-figure img', { yPercent: 12, opacity: 0, duration: 1.1 }, 0.25)
       .from('.hero-tag', { x: -24, opacity: 0, duration: 0.7 }, 0.4)
       .from('.hero-title .split-line > span', { yPercent: 110, duration: 0.9, stagger: 0.08 }, 0.45)
@@ -28,7 +27,6 @@ export function Hero() {
       </div>
       <div className="hero-fade-l" />
       <div className="hero-figure">
-        <svg className="hero-ring" viewBox="0 0 320 320" aria-hidden="true"><circle cx="160" cy="160" r="158" strokeDasharray="1000" /></svg>
         <img src="assets/kasi.png" alt={profile.name} />
       </div>
       <div className="hero-fade-b" />

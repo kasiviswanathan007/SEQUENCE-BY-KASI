@@ -167,8 +167,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-fade-l { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 42%, rgba(0,0,0,0) 72%); z-index: 2; }
 .hero-fade-b { position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: linear-gradient(0deg, #000 12%, rgba(0,0,0,0)); z-index: 4; }
 .hero-figure { position: absolute; right: clamp(0px, 7vw, 140px); bottom: 0; height: 92%; aspect-ratio: 0.684; z-index: 3; }
-.hero-ring { position: absolute; left: 50%; top: 18%; width: 92%; aspect-ratio: 1; transform: translateX(-50%); }
-.hero-ring circle { fill: none; stroke: var(--lime); stroke-width: 1.2; }
 .hero-figure img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom;
   -webkit-mask-image: linear-gradient(to bottom, #000 58%, rgba(0,0,0,.65) 78%, transparent 100%);
