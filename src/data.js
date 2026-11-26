@@ -7,7 +7,7 @@
 export const profile = {
   name: 'Kasi Viswanathan',
   brand: 'Sequence by Kasi',
-  role: 'Senior Full Stack Video Editor & Gen AI Creator',
+  role: 'Video Editor & Gen AI Creator',
   city: 'Chennai',
   tagline: '[One line on your editing style: what you cut, who you cut for, the feeling you leave people with.]',
   // Home page — short brief about you (2–3 lines)
