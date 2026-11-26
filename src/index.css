@@ -128,9 +128,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ── Hero ── */
-.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, #1d1f14 0%, #0b0b0c 55%, #000 100%); }
-.hero-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; background: #000; }
+.hero-bg { position: absolute; inset: 0; background: #000; overflow: hidden; pointer-events: none; }
+.hero-grid {
+  position: absolute; inset: 0; opacity: .28;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 65% 45%, #000 20%, transparent 80%);
+}
+.hero-ruler {
+  position: absolute; left: 0; right: 0; top: 82px; height: 14px; opacity: .35;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(205,247,4,.45) 0 1px,
+    transparent 1px 16px,
+    rgba(255,255,255,.18) 16px 17px,
+    transparent 17px 32px
+  );
+  background-size: 64px 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+.hero-safe-frame {
+  position: absolute; inset: 92px var(--pad) 44px;
+  border: 1px solid rgba(255,255,255,.04);
+  background:
+    linear-gradient(to right, rgba(205,247,4,.28) 14px, transparent 14px) 0 0 / 100% 1px no-repeat,
+    linear-gradient(to bottom, rgba(205,247,4,.28) 14px, transparent 14px) 0 0 / 1px 100% no-repeat,
+    linear-gradient(to left, rgba(205,247,4,.28) 14px, transparent 14px) 100% 0 / 100% 1px no-repeat,
+    linear-gradient(to bottom, rgba(205,247,4,.28) 14px, transparent 14px) 100% 0 / 1px 100% no-repeat,
+    linear-gradient(to right, rgba(205,247,4,.28) 14px, transparent 14px) 0 100% / 100% 1px no-repeat,
+    linear-gradient(to top, rgba(205,247,4,.28) 14px, transparent 14px) 0 100% / 1px 100% no-repeat,
+    linear-gradient(to left, rgba(205,247,4,.28) 14px, transparent 14px) 100% 100% / 100% 1px no-repeat,
+    linear-gradient(to top, rgba(205,247,4,.28) 14px, transparent 14px) 100% 100% / 1px 100% no-repeat;
+}
 .hero-fade-l { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 42%, rgba(0,0,0,0) 72%); z-index: 2; }
 .hero-fade-b { position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: linear-gradient(0deg, #000 12%, rgba(0,0,0,0)); z-index: 4; }
 .hero-figure { position: absolute; right: clamp(0px, 7vw, 140px); bottom: 0; height: 92%; aspect-ratio: 0.684; z-index: 3; }
@@ -155,7 +187,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .sec-head { gap: 16px; }
   .hero { height: 100svh; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 64px 0 28px; background: #000; }
   .hero-bg { background: #000; }
-  .hero-bg video { opacity: .42; }
+  .hero-ruler { top: 68px; opacity: .25; }
+  .hero-safe-frame { inset: 74px 14px 20px; }
   .hero-fade-l { display: none; }
   .hero-figure { position: relative; right: auto; margin: 0 auto; height: auto; width: min(52vw, 220px); }
   .hero-copy { position: relative; left: auto; bottom: auto; margin: -36px auto 0; padding: 0 16px; text-align: center; align-items: center; width: 100%; gap: 10px; }

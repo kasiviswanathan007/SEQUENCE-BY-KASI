@@ -1,11 +1,10 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { gsap, useGSAP, Icon, scrollToId, isMobile } from '../lib.jsx'
 import { profile } from '../data.js'
 
-// 03 · Home — showreel behind, portrait in lime ring, title rise, parallax on scroll
+// 03 · Home — black backdrop with minimal editing texture, portrait in lime ring, title rise
 export function Hero() {
   const ref = useRef(null)
-  const [reelOk, setReelOk] = useState(Boolean(profile.showreel))
   useGSAP(() => {
     if (isMobile()) return
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
@@ -20,8 +19,10 @@ export function Hero() {
 
   return (
     <section className="hero" id="home" data-nav="home" ref={ref}>
-      <div className="hero-bg">
-        {reelOk && <video src={profile.showreel} autoPlay muted loop playsInline onError={() => setReelOk(false)} />}
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-grid" />
+        <div className="hero-ruler" />
+        <div className="hero-safe-frame" />
       </div>
       <div className="hero-fade-l" />
       <div className="hero-figure">

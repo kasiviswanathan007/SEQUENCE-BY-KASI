@@ -16,7 +16,7 @@ export const profile = {
     "I'm Kasi Viswanathan, a Creative Video Editor with 3.5+ years of professional experience in crafting engaging visual content. I specialize in commercial ads, social media content, cinematic storytelling, motion graphics and AI-powered video production.",
     'With a strong understanding of brand identity and advertising psychology, I transform creative ideas into impactful visual stories that capture attention, connect with audiences and bring brands to life.',
   ],
-  showreel: 'assets/work/ai/ai-01.mp4', // set to 'assets/showreel.mp4' when ready
+  showreel: '', // set to 'assets/showreel.mp4' when ready
   showreelRuntime: '[Runtime]',
   instagram: 'https://www.instagram.com/sequence_by_kasi?jplx=MWMxOTV2OGx1N3R5Zw==',
   whatsapp: 'https://wa.me/916383105697',
