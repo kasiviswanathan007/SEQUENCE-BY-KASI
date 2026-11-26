@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import Lenis from 'lenis'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 export { gsap, ScrollTrigger, useGSAP }
@@ -10,30 +9,18 @@ export { gsap, ScrollTrigger, useGSAP }
 export const isMobile = () =>
   typeof window !== 'undefined' && (window.innerWidth <= 960 || window.matchMedia('(pointer: coarse)').matches)
 
-// ── smooth scroll (Lenis) wired into GSAP's ticker ──
-let lenis = null
-export function useSmoothScroll(enabled) {
-  useEffect(() => {
-    if (!enabled || isMobile()) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    lenis = new Lenis({ duration: 0.75, lerp: 0.14, smoothWheel: true })
-    lenis.on('scroll', ScrollTrigger.update)
-    const tick = (t) => lenis.raf(t * 1000)
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
-    return () => { gsap.ticker.remove(tick); lenis.destroy(); lenis = null }
-  }, [enabled])
-}
+// ── native scroll (no velocity physics) ──
+export function useSmoothScroll() {}
 export function scrollToId(id) {
   const el = document.getElementById(id)
   if (!el) return
   const offset = window.innerWidth <= 960 ? -60 : -72
-  if (lenis) lenis.scrollTo(el, { offset: id === 'home' ? 0 : offset, duration: 0.8 })
-  else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior: 'smooth' })
+  const top = id === 'home' ? 0 : el.getBoundingClientRect().top + window.scrollY + offset
+  window.scrollTo({ top, behavior: 'auto' })
 }
 export function lockScroll(lock) {
+  document.documentElement.classList.toggle('locked', lock)
   document.body.classList.toggle('locked', lock)
-  if (lenis) lock ? lenis.stop() : lenis.start()
 }
 
 // ── which section is on screen ──

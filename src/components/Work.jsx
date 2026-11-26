@@ -54,7 +54,7 @@ function Card({ item, vertical, cat, onOpen }) {
   const touch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
   const enter = () => { if (touch) return; timer.current = setTimeout(() => setHover(true), 140) }
   const leave = () => { clearTimeout(timer.current); setHover(false) }
-  const open = () => onOpen({ ...item, cat })
+  const open = () => onOpen({ ...item, cat, vertical })
   const cover = item.thumb ? <Media src={item.thumb} label={item.title} /> : (item.preview || item.video) ? <Media src={`${item.preview || item.video}#t=0.5`} video lazy label={item.title} /> : <Media src="" label={item.title} />
   const hoverSrc = item.preview || item.video
   return (
@@ -100,10 +100,10 @@ export function ProjectModal({ item, onClose }) {
   return (
     <AnimatePresence>
       {item && (
-        <motion.div className="modal-wrap" data-lenis-prevent initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} onClick={onClose}>
-          <motion.div className="modal" role="dialog" aria-modal="true" aria-label={item.title} onClick={(e) => e.stopPropagation()}
-            initial={{ y: 36, scale: 0.96, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 24, scale: 0.97, opacity: 0 }}
-            transition={{ duration: 0.26, ease }}>
+        <motion.div className="modal-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }} onClick={onClose}>
+          <motion.div className={`modal ${item.vertical ? 'vertical' : 'landscape'}`} role="dialog" aria-modal="true" aria-label={item.title} onClick={(e) => e.stopPropagation()}
+            initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 16, opacity: 0 }}
+            transition={{ duration: 0.2, ease }}>
             <div className="modal-media">
               {playing && item.video ? (
                 isEmbed(item.video)

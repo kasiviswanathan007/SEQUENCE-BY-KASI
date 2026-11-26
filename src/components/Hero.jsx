@@ -9,21 +9,13 @@ export function Hero() {
   useGSAP(() => {
     if (isMobile()) return
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
-    tl.from('.hero-bg', { scale: 1.15, opacity: 0, duration: 1.8 })
-      .from('.hero-ring circle', { strokeDashoffset: 1000, duration: 1.8, ease: 'power2.inOut' }, 0.2)
-      .from('.hero-figure img', { yPercent: 18, opacity: 0, duration: 1.4 }, 0.35)
-      .from('.hero-tag', { x: -30, opacity: 0, duration: 0.9 }, 0.6)
-      .from('.hero-title .split-line > span', { yPercent: 110, duration: 1.2, stagger: 0.1 }, 0.65)
-      .from(['.hero-copy p', '.hero-meta', '.hero-btns'], { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, 0.95)
-      .from('.hero-scroll', { opacity: 0, duration: 1 }, 1.2)
-
-    const mm = gsap.matchMedia()
-    mm.add('(min-width: 961px)', () => {
-      const st = { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true }
-      gsap.to('.hero-figure', { yPercent: 14, ease: 'none', scrollTrigger: st })
-      gsap.to('.hero-copy', { yPercent: -30, opacity: 0, ease: 'none', scrollTrigger: st })
-      gsap.to('.hero-bg', { scale: 1.12, ease: 'none', scrollTrigger: st })
-    })
+    tl.from('.hero-bg', { opacity: 0, duration: 1.0 })
+      .from('.hero-ring circle', { strokeDashoffset: 1000, duration: 1.4, ease: 'power2.inOut' }, 0.15)
+      .from('.hero-figure img', { yPercent: 12, opacity: 0, duration: 1.1 }, 0.25)
+      .from('.hero-tag', { x: -24, opacity: 0, duration: 0.7 }, 0.4)
+      .from('.hero-title .split-line > span', { yPercent: 110, duration: 0.9, stagger: 0.08 }, 0.45)
+      .from(['.hero-copy p', '.hero-meta', '.hero-btns'], { y: 20, opacity: 0, duration: 0.8, stagger: 0.08 }, 0.7)
+      .from('.hero-scroll', { opacity: 0, duration: 0.8 }, 0.9)
   }, { scope: ref })
 
   return (

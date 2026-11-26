@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { gsap, useGSAP, Reveal, useStagger, Icon, isMobile } from '../lib.jsx'
-import { testimonials, services, clients, toolkit, profile, aboutMore } from '../data.js'
+import { gsap, useGSAP, Reveal, useStagger, Icon, isMobile, scrollToId } from '../lib.jsx'
+import { testimonials, services, clients, toolkit, profile, aboutMore, nav } from '../data.js'
 
 // Reviews
 export function Reviews() {
@@ -285,8 +285,24 @@ export function Contact() {
         </div>
       </section>
       <footer className="footer">
-        <img src="assets/sbk-logo.png" alt={profile.brand} />
-        <span>© {new Date().getFullYear()} {profile.brand} · {profile.city}</span>
+        <div className="footer-brand">
+          <a href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home') }} aria-label={`${profile.brand} home`}>
+            <img src="assets/sbk-logo.png" alt={profile.brand} />
+          </a>
+          <small>{profile.role} · {profile.city}</small>
+        </div>
+        <nav className="footer-links" aria-label="Footer navigation">
+          {nav.map((item) => (
+            <a key={item.id} href={`#${item.id}`} onClick={(e) => { e.preventDefault(); scrollToId(item.id) }}>{item.label}</a>
+          ))}
+        </nav>
+        <div className="footer-actions">
+          <a href={profile.instagram} target="_blank" rel="noreferrer">Instagram</a>
+          <a href={profile.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
+          <a href={profile.email}>Email</a>
+          <button type="button" className="footer-top" onClick={() => scrollToId('home')}>↑ Top</button>
+        </div>
+        <div className="footer-copy">© {new Date().getFullYear()} {profile.brand} · {profile.city}</div>
       </footer>
     </>
   )

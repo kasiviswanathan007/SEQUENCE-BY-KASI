@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Icon, scrollToId, lockScroll } from '../lib.jsx'
+import { Icon, scrollToId, lockScroll, isMobile } from '../lib.jsx'
 import { nav, profile } from '../data.js'
 
 export function Nav({ active }) {
@@ -11,12 +11,19 @@ export function Nav({ active }) {
     on(); window.addEventListener('scroll', on, { passive: true })
     return () => window.removeEventListener('scroll', on)
   }, [])
-  useEffect(() => { lockScroll(open) }, [open])
-  const go = (id) => { setOpen(false); setTimeout(() => scrollToId(id), open ? 350 : 0) }
+  useEffect(() => {
+    lockScroll(open)
+    return () => lockScroll(false)
+  }, [open])
+  const go = (id) => {
+    const wasOpen = open
+    setOpen(false)
+    setTimeout(() => scrollToId(id), wasOpen ? 40 : 0)
+  }
 
   return (
     <>
-      <motion.header className={`nav ${solid ? 'solid' : ''}`} initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}>
+      <motion.header className={`nav ${solid ? 'solid' : ''}`} initial={isMobile() ? false : { y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}>
         <a className="nav-logo" href="#home" onClick={(e) => { e.preventDefault(); go('home') }} aria-label={`${profile.brand}, home`}>
           <img src="assets/sbk-logo.png" alt="SBK" />
         </a>
@@ -36,19 +43,17 @@ export function Nav({ active }) {
 
       <AnimatePresence>
         {open && (
-          <motion.div className="menu" initial={{ clipPath: 'circle(0% at 95% 30px)' }} animate={{ clipPath: 'circle(150% at 95% 30px)' }}
-            exit={{ clipPath: 'circle(0% at 95% 30px)' }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+          <motion.div className="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
             <div className="menu-top">
               <img src="assets/sbk-logo.png" alt={profile.brand} />
               <button className="nav-burger" style={{ display: 'flex' }} aria-label="Close menu" onClick={() => setOpen(false)}><Icon.Close size={26} /></button>
             </div>
             <div className="menu-links">
-              {nav.map((n, i) => (
-                <motion.a key={n.id} href={`#${n.id}`} className={`menu-link ${active === n.id ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); go(n.id) }}
-                  initial={{ x: -30, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.15 + i * 0.05 }}>
+              {nav.map((n) => (
+                <a key={n.id} href={`#${n.id}`} className={`menu-link ${active === n.id ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); go(n.id) }}>
                   {n.label}<Icon.Right size={20} />
-                </motion.a>
+                </a>
               ))}
             </div>
             <div className="menu-bottom">
