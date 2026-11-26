@@ -48,22 +48,22 @@ const reelsItems = [
 ]
 
 const aiReelsItems = [
-  { id: 'ai-reels-1', title: 'Park Avenue', client: 'Park Avenue', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-04.mp4', video: 'assets/work/ai-reels/ai-reel-04.mp4' },
-  { id: 'ai-reels-2', title: 'Park Avenue', client: 'Park Avenue', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-05.mp4', video: 'assets/work/ai-reels/ai-reel-05.mp4' },
-  { id: 'ai-reels-3', title: 'Pettikadai', client: 'Pettikadai', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-07.mp4', video: 'assets/work/ai-reels/ai-reel-07.mp4' },
-  { id: 'ai-reels-4', title: 'TATA', client: 'TATA', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-08.mp4', video: 'assets/work/ai-reels/ai-reel-08.mp4' },
-  { id: 'ai-reels-5', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-02.mp4', video: 'assets/work/ai-reels/ai-reel-02.mp4' },
-  { id: 'ai-reels-6', title: 'Paudha', client: 'Paudha', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-06.mp4', video: 'assets/work/ai-reels/ai-reel-06.mp4' },
-  { id: 'ai-reels-7', title: 'THINK GAS', client: 'THINK GAS', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-09.mp4', video: 'assets/work/ai-reels/ai-reel-09.mp4' },
-  { id: 'ai-reels-8', title: 'Colour Craft', client: 'Colour Craft', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-01.mp4', video: 'assets/work/ai-reels/ai-reel-01.mp4' },
-  { id: 'ai-reels-9', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-10.mp4', video: 'assets/work/ai-reels/ai-reel-10.mp4' },
-  { id: 'ai-reels-10', title: 'NASA', client: 'NASA', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai-reels/ai-reel-03.mp4', video: 'assets/work/ai-reels/ai-reel-03.mp4' },
+  { id: 'ai-reels-1', title: 'Park Avenue', client: 'Park Avenue', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-04.mp4', video: 'assets/work/ai-reels/ai-reel-04.mp4' },
+  { id: 'ai-reels-2', title: 'Park Avenue', client: 'Park Avenue', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-05.mp4', video: 'assets/work/ai-reels/ai-reel-05.mp4' },
+  { id: 'ai-reels-3', title: 'Pettikadai', client: 'Pettikadai', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-07.mp4', video: 'assets/work/ai-reels/ai-reel-07.mp4' },
+  { id: 'ai-reels-4', title: 'TATA', client: 'TATA', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-08.mp4', video: 'assets/work/ai-reels/ai-reel-08.mp4' },
+  { id: 'ai-reels-5', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-02.mp4', video: 'assets/work/ai-reels/ai-reel-02.mp4' },
+  { id: 'ai-reels-6', title: 'Paudha', client: 'Paudha', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-06.mp4', video: 'assets/work/ai-reels/ai-reel-06.mp4' },
+  { id: 'ai-reels-7', title: 'THINK GAS', client: 'THINK GAS', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-09.mp4', video: 'assets/work/ai-reels/ai-reel-09.mp4' },
+  { id: 'ai-reels-8', title: 'Colour Craft', client: 'Colour Craft', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-01.mp4', video: 'assets/work/ai-reels/ai-reel-01.mp4' },
+  { id: 'ai-reels-9', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-10.mp4', video: 'assets/work/ai-reels/ai-reel-10.mp4' },
+  { id: 'ai-reels-10', title: 'NASA', client: 'NASA', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-03.mp4', video: 'assets/work/ai-reels/ai-reel-03.mp4' },
 ]
 
 const aiItems = [
-  { id: 'ai-1', title: 'ACT 2 Popcorn', client: 'ACT 2 Popcorn', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai/ai-01.mp4', video: 'assets/work/ai/ai-01.mp4' },
-  { id: 'ai-2', title: 'KFC', client: 'KFC', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai/ai-02.mp4', video: 'assets/work/ai/ai-02.mp4' },
-  { id: 'ai-3', title: 'Mountain Dew', client: 'Mountain Dew', tools: 'Premiere Pro · After Effects · AI Tools', preview: 'assets/work/ai/ai-03.mp4', video: 'assets/work/ai/ai-03.mp4' },
+  { id: 'ai-1', title: 'ACT 2 Popcorn', client: 'ACT 2 Popcorn', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai/ai-01.mp4', video: 'assets/work/ai/ai-01.mp4' },
+  { id: 'ai-2', title: 'KFC', client: 'KFC', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai/ai-02.mp4', video: 'assets/work/ai/ai-02.mp4' },
+  { id: 'ai-3', title: 'Mountain Dew', client: 'Mountain Dew', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai/ai-03.mp4', video: 'assets/work/ai/ai-03.mp4' },
 ]
 
 const trailerItems = [
