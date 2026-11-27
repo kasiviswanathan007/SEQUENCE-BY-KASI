@@ -60,7 +60,6 @@ const aiItems = [
 
 const trailerItems = [
   { id: 'trailer-1', title: '96', client: '96', tools: 'Premiere Pro · After Effects', preview: 'assets/work/trailer/trailer-01.mp4', video: 'assets/work/trailer/trailer-01.mp4' },
-  { id: 'trailer-2', title: '96', client: '96', tools: 'Premiere Pro · After Effects', preview: 'assets/work/trailer/trailer-02.mp4', video: 'assets/work/trailer/trailer-02.mp4' },
   { id: 'trailer-3', title: 'Rahul', client: 'Rahul', tools: 'Premiere Pro · After Effects', preview: 'assets/work/trailer/trailer-03.mp4', video: 'assets/work/trailer/trailer-03.mp4' },
   { id: 'trailer-4', title: 'McKingstown', client: 'McKingstown', tools: 'Premiere Pro · After Effects', preview: 'assets/work/trailer/trailer-04.mp4', video: 'assets/work/trailer/trailer-04.mp4' },
 ]
