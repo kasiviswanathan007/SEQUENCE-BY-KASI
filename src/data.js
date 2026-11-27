@@ -72,8 +72,8 @@ const corporateItems = [
 ]
 
 const brandItems = [
-  { id: 'brand-1', title: 'Asal', client: 'Asal', tools: 'Premiere Pro · DaVinci Resolve', preview: 'assets/work/brand/brand-01.mov', video: 'assets/work/brand/brand-01.mov' },
-  { id: 'brand-2', title: 'EV Retron Energies', client: 'EV Retron Energies', tools: 'Premiere Pro · After Effects', preview: 'assets/work/brand/brand-02.mp4', video: 'assets/work/brand/brand-02.mp4' },
+  { id: 'brand-1', title: 'Asal', client: 'Asal', tools: 'Premiere Pro · DaVinci Resolve', thumb: 'assets/work/brand/brand-01-cover.jpg', preview: 'assets/work/brand/brand-01.mov', video: 'assets/work/brand/brand-01.mov' },
+  { id: 'brand-2', title: 'EV Retron Energies', client: 'EV Retron Energies', tools: 'Premiere Pro · After Effects', thumb: 'assets/work/brand/brand-02-cover.jpg', preview: 'assets/work/brand/brand-02.mp4', video: 'assets/work/brand/brand-02.mp4' },
   { id: 'brand-3', title: 'Vatio', client: 'Vatio', tools: 'Premiere Pro · DaVinci Resolve', preview: 'assets/work/brand/brand-03.mp4', video: 'assets/work/brand/brand-03.mp4' },
 ]
 
