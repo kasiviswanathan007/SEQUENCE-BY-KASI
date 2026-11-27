@@ -38,13 +38,9 @@ const reelsItems = [
   { id: 'reels-1', title: 'Asal', client: 'Asal', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-01.mp4', video: 'assets/work/reels/reel-01.mp4' },
   { id: 'reels-2', title: 'LevelUp Learning', client: 'LevelUp Learning', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-04.mp4', video: 'assets/work/reels/reel-04.mp4' },
   { id: 'reels-3', title: 'QPO', client: 'QPO', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-03.mp4', video: 'assets/work/reels/reel-03.mp4' },
-  { id: 'reels-4', title: 'Perkzio', client: 'Perkzio', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-07.mp4', video: 'assets/work/reels/reel-07.mp4' },
   { id: 'reels-5', title: 'Saravanan Decodes', client: 'Saravanan Decodes', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-09.mp4', video: 'assets/work/reels/reel-09.mp4' },
   { id: 'reels-6', title: 'Top One Percent', client: 'Top One Percent', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-10.mp4', video: 'assets/work/reels/reel-10.mp4' },
-  { id: 'reels-7', title: 'Sandy 360', client: 'Sandy 360', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-08.mp4', video: 'assets/work/reels/reel-08.mp4' },
   { id: 'reels-8', title: 'LevelUp Learning', client: 'LevelUp Learning', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-05.mp4', video: 'assets/work/reels/reel-05.mp4' },
-  { id: 'reels-9', title: 'McKingstown', client: 'McKingstown', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-06.mp4', video: 'assets/work/reels/reel-06.mp4' },
-  { id: 'reels-10', title: 'Bianco', client: 'Bianco', tools: 'Premiere Pro · After Effects', preview: 'assets/work/reels/reel-02.mp4', video: 'assets/work/reels/reel-02.mp4' },
 ]
 
 const aiReelsItems = [
