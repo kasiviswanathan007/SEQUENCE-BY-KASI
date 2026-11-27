@@ -49,11 +49,7 @@ const aiReelsItems = [
   { id: 'ai-reels-3', title: 'Pettikadai', client: 'Pettikadai', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-07.mp4', video: 'assets/work/ai-reels/ai-reel-07.mp4' },
   { id: 'ai-reels-4', title: 'TATA', client: 'TATA', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-08.mp4', video: 'assets/work/ai-reels/ai-reel-08.mp4' },
   { id: 'ai-reels-5', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-02.mp4', video: 'assets/work/ai-reels/ai-reel-02.mp4' },
-  { id: 'ai-reels-6', title: 'Paudha', client: 'Paudha', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-06.mp4', video: 'assets/work/ai-reels/ai-reel-06.mp4' },
   { id: 'ai-reels-7', title: 'THINK GAS', client: 'THINK GAS', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-09.mp4', video: 'assets/work/ai-reels/ai-reel-09.mp4' },
-  { id: 'ai-reels-8', title: 'Colour Craft', client: 'Colour Craft', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-01.mp4', video: 'assets/work/ai-reels/ai-reel-01.mp4' },
-  { id: 'ai-reels-9', title: 'Hawaii Doors', client: 'Hawaii Doors', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-10.mp4', video: 'assets/work/ai-reels/ai-reel-10.mp4' },
-  { id: 'ai-reels-10', title: 'NASA', client: 'NASA', tools: 'Premiere Pro · Higgsfield · Envato', preview: 'assets/work/ai-reels/ai-reel-03.mp4', video: 'assets/work/ai-reels/ai-reel-03.mp4' },
 ]
 
 const aiItems = [
