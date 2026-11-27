@@ -77,11 +77,18 @@ const brandItems = [
   { id: 'brand-3', title: 'Vatio', client: 'Vatio', tools: 'Premiere Pro · DaVinci Resolve', preview: 'assets/work/brand/brand-03.mp4', video: 'assets/work/brand/brand-03.mp4' },
 ]
 
+const motionItems = [
+  { id: 'motion-1', title: 'SBK Website Launch', client: 'Sequence by Kasi', tools: 'After Effects · Premiere Pro', preview: 'assets/work/motion/motion-01.mp4', video: 'assets/work/motion/motion-01.mp4' },
+  { id: 'motion-2', title: 'Duolingo — A New World', client: 'Duolingo', tools: 'After Effects · Premiere Pro', preview: 'assets/work/motion/motion-02.mp4', video: 'assets/work/motion/motion-02.mp4' },
+  { id: 'motion-3', title: 'Spotify SaaS', client: 'Spotify', tools: 'After Effects · Premiere Pro', preview: 'assets/work/motion/motion-03.mp4', video: 'assets/work/motion/motion-03.mp4' },
+]
+
 // Work rows — in this order
 export const workRows = [
   { id: 'reels', title: 'Reels & Shorts', vertical: true, items: reelsItems },
   { id: 'ai-reels', title: 'AI Reels', vertical: true, items: aiReelsItems },
   { id: 'ai', title: 'AI Commercials', items: aiItems },
+  { id: 'motion', title: 'Motion Graphics', items: motionItems },
   { id: 'trailer', title: 'Trailer Cuts', items: trailerItems },
   { id: 'corporate', title: 'Corporate Works', items: corporateItems },
   { id: 'brand', title: 'Brand Films', items: brandItems },
